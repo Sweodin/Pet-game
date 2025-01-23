@@ -1,0 +1,416 @@
+@use '../scss/color';
+@use '../scss/font';
+@import '../scss/mixing';
+
+.animal-page-container{
+    @include container(1147px, 641px);
+    margin: auto;
+    background-color: color.$game-center-bg;
+    border: 1px solid #000;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    position: relative;
+
+    .point-container{
+        @include container(120px, 60px);
+        @include flexbox(space-between, center);
+        margin-left: auto;
+        margin-right: 30px;
+        margin-top:20px;
+        margin-bottom: 50px;
+
+        .star-point-number{
+            font-family: font.$micro-5;
+            font-size: 51px;
+            margin-top: 10px;
+        }
+    }
+
+    .animal-status-container{
+        @include container(970px, 180px);
+        margin: auto;
+        margin-top:10px;
+        @include flexbox(space-between, flex-start, row);
+      
+        .animal-img{
+            .cat-status{
+                @include specification;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+        
+            img {
+                width: 300px;
+                margin-left: 50px;
+                position: relative;
+            }
+        
+            .visible {
+                width: 100px; 
+                height: 100px; 
+                position: relative; 
+                top: -120px;
+                left: 150px;
+                transform: translate(-50%, -50%); 
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 10;
+            
+                img {
+                  width: 50%;
+                  height: auto;
+                }
+            }
+
+            .poop-visible {
+                width: 50px;
+                position:absolute;
+
+                .poopBtn{
+                    width: 50px;
+                    position:relative;
+                    top:-200px;
+                    left: 350px;
+                    background-color: inherit;
+                    border: none;
+                    cursor: pointer;
+
+                    img{
+                        width: 50px;
+                    }
+                }
+            }
+        }
+        
+        .animal-status{
+            @include flexbox(space-between, center, column);
+            @include container(430px, 350px);
+
+            .needs{
+                @include container(450px, 60px);
+                @include flexbox(flex-end, center, row);
+                margin-left: auto;
+
+                .text-container{
+                    @include container(130px, 40px);
+                    display: flex;
+
+                    .spec{
+                        @include specification;
+                        margin-left:auto;
+                        margin-right: 20px;
+                    }
+                }
+
+                .bar {
+                    width: 100%;
+                    height: 20px;
+                    background-color: #f0f0f0;
+                    border:1px solid black;
+                    border-radius: 5px;
+                    overflow: hidden;
+                  
+                  
+                  .color {
+                    height: 100%;
+                    transition: width 0.3s ease-in-out;
+                  }
+                }
+            }
+
+            .img-food-container{
+                @include container(430px, 50px);
+                @include flexbox(space-around, center, row);
+                margin-top:20px;
+                
+                .food,
+                .drink{
+                    max-width: 150px;
+                    min-height: auto;
+                    width: 100%;
+                    @include flexbox(center, center, column);
+        
+                    .img{
+                        width: 45px;
+                    }
+
+                    .img-wine{
+                        width:35px;
+                    }
+                }
+            }
+
+            .button-food-container{
+                @include container(430px, 50px);
+                @include flexbox(space-around, center, row);
+                margin-bottom: 20px;
+
+                .food-btn,
+                .drink-btn{
+                    @include flexbox(center, center, column);
+                    @include status-button;
+                }
+            }
+        }
+    }
+
+    .animal-page-btn{
+        @include container(970px, 70px);
+        @include flexbox(space-between, center);
+        margin:auto;  
+        margin-bottom: 20px;
+        
+        .btn-game{
+            @include game-button;
+            cursor: pointer;
+        }
+    }
+}
+
+.overlay-food {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: auto;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+@media screen and (min-width: 320px) and (max-width: 500px){
+    .animal-page-container{
+        @include container(400px, 200px);
+
+        .point-container{
+            margin: 10px auto;
+        }
+    
+        .animal-status-container{
+            @include container(400px, 380px);
+            margin:70px auto;
+            @include flexbox(space-between, center, column);
+    
+            .animal-img{
+                img{
+                    width: 250px;
+                    margin-left: 0px;
+                }
+
+                .poop-visible {
+                    width: 50px;
+                    position:absolute;
+    
+                    .poopBtn{
+                        width: 50px;
+                        position:relative;
+                        top:-100px;
+                        left: 200px;
+                        background-color: inherit;
+                        border: none;
+                        cursor: pointer;
+    
+                        img{
+                            width: 50px;
+                        }
+                    }
+                }
+            }
+
+            .overlay-food {
+                position: absolute;
+                top: 50%;
+                left: 50%; 
+                transform: translate(-50%, -50%);
+                width: 45px;
+                z-index: 10;
+            }
+            
+            .animal-status{
+                @include flexbox(space-between, center, column);
+                @include container(400px, 50px);
+    
+                .needs{
+                    @include container(400px, 60px);
+                    @include flexbox(center, center, column);
+                    margin: 0px;
+    
+                    .text-container{
+                        @include container(130px, 40px);
+                        margin-bottom: 10px;
+    
+                        .spec{
+                            @include specification;
+                            margin:auto;
+                        }
+                    }
+    
+                    .bar {
+                        max-width: 320px;
+                        min-height: 20px;
+                        width: 100%;
+                      
+                      
+                        .color {
+                            height: 100%;
+                            transition: width 0.3s ease-in-out;
+                        }
+                    }
+
+                    .button-food-container{
+                        @include container(430px, 50px);
+                        @include flexbox(space-around, center, row);
+                        margin-bottom: 20px;
+        
+                        .food-btn,
+                        .drink-btn{
+                            @include flexbox(center, center, column);
+                            @include status-button;
+                        }
+                    }
+                }
+            }
+        }
+    
+        .animal-page-btn{
+            @include container(400px, 150px);
+            @include flexbox(space-around, center, row, wrap);
+            margin:auto;  
+            
+            .btn-game{
+                @include game-button;
+                width: 150px;
+                height: 50px;
+            }
+        }
+    }   
+}
+
+
+@media screen and (min-width: 501px) and (max-width: 768px){
+    .animal-page-container{
+        @include container(700px, 200px);
+        margin: auto;
+        .animal-status-container{
+            @include container(500px, 380px);
+            @include flexbox(space-between, center, column);
+
+    
+            .animal-img{
+                img{
+                    width: 350px;
+                    margin: 0px;
+                    position: relative;
+                }
+            }
+            
+            .animal-status{
+                @include flexbox(space-between, center, column);
+                @include container(500px, 50px);
+    
+                .needs{
+                    @include container(500px, 60px);
+                    @include flexbox(center, center, column);
+                    margin: 0px;
+    
+                    .text-container{
+                        @include container(130px, 40px);
+                        margin-bottom: 10px;
+    
+                        .spec{
+                            @include specification;
+                            margin:auto;
+                        }
+                    }
+    
+                    .bar {
+                        max-width: 520px;
+                        min-height: 20px;
+                        width: 100%;
+                      
+                      
+                      .color {
+                        height: 100%;
+                        transition: width 0.3s ease-in-out;
+                      }
+                    }
+                }
+            }
+        }
+    
+        .animal-page-btn{
+            @include container(500px, 150px);
+            @include flexbox(space-around, center, row, wrap);
+            margin:auto;  
+            
+            .btn-game{
+                @include game-button;
+                width: 220px;
+                height: 50px;
+            }
+        }
+    }   
+}
+
+@media screen and (min-width: 769px) and (max-width: 1023px){
+    .animal-page-container{
+        @include container(900px, 200px);
+        margin: auto;
+        .animal-status-container{
+            @include container(880px, 380px);
+            @include flexbox(space-between, center, column);
+
+    
+            .animal-img{
+                img{
+                    width: 350px;
+                    margin: 0px;
+                    position: relative;
+                }
+            }
+            
+            .animal-status{
+                @include flexbox(space-between, center, column);
+                @include container(800px, 50px);
+    
+                .needs{
+                    @include container(800px, 60px);
+                    @include flexbox(center, center, row);
+                    margin: 0px;
+    
+                    .text-container{
+                        @include container(130px, 40px);
+                        margin-bottom: 10px;
+    
+                        .spec{
+                            @include specification;
+                            margin:auto;
+                        }
+                    }
+    
+                    .bar {
+                        max-width: 520px;
+                        min-height: 20px;
+                        width: 100%;
+                      
+                      
+                      .color {
+                        height: 100%;
+                        transition: width 0.3s ease-in-out;
+                      }
+                    }
+                }
+            }
+        }
+    
+        .animal-page-btn{
+            @include container(800px, 150px);
+            @include flexbox(space-around, center, row, wrap);
+            margin:auto;  
+            
+            .btn-game{
+                @include game-button;
+            }
+        }
+    }   
+}

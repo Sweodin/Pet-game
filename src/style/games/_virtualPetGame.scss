@@ -1,0 +1,89 @@
+@use '../scss/color';
+@use '../scss/font';
+@import '../scss/mixing';
+
+$mobile-max: 900px;
+$button-width-mobile: 200px;
+
+.back-button-container {
+  @include container(1147px, 641px);
+  margin: auto;
+  @include flexbox(center, center, column);
+
+  .back-button {
+    @include game-button;
+    width: 300px;
+    margin-bottom: 20px;
+  }
+}
+
+.game-frame {
+  @include flexbox (center, center, column);
+  background-color: color.$form-bg;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: 1px black solid;
+
+  .virtual-pet-game {
+    padding: 20px;
+    text-align: center;
+    
+    .game-title {
+      @include specification;
+      margin-bottom: 10px;
+    }
+
+    p{
+      @include specification;
+    }
+    
+    .game-buttons-container {
+      @include container (100%, 50px);
+      @include flexbox;
+      gap: 20px;
+      margin: 20px auto;
+    
+      .game {
+        @include game-button;
+        background-color: #4caf50;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        border: 1px solid black;
+        font-size: 38px;
+      }
+    }
+  }
+
+  .game-cat {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 150px;
+    height: auto;
+  }
+}
+@media screen and (max-width: $mobile-max) {
+  .back-button-container {
+    @include container($mobile-max, 900px);
+
+    .back-button {
+      width: $button-width-mobile;
+      font-size: 40px;
+    }
+  }
+
+  .game-frame {
+    @include container(500px, 500px);
+    padding: 0 20px;
+    .virtual-pet-game {
+      .game-buttons-container {
+        @include flexbox(center, center, column);
+
+        .game {
+          font-size: 28px;
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,122 @@
+@use '../scss/color';
+@use '../scss/font';
+@import '../scss/mixing';
+
+.info-wrapper{
+    @include container;
+    background-image: url(../../assets/virtual-pet-bg.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+
+    .info-container{
+        @include container(700px, 650px);
+        @include flexbox(center, center,column);
+        border: 1px solid rgba(0, 0, 0, 0.45);
+        background-color: color.$background-info-box;
+        border-radius:3px;
+        margin:auto;
+        box-shadow: -10px 10px 0 #c96523;;
+
+        &-content{
+            @include container(450px, 450px);
+            @include flexbox(center, center, column);
+            margin: auto auto;
+            gap:20px;
+            .heading{
+                font-family: font.$micro-5;
+                font-weight: 400;
+                font-size: 51px;
+                line-height: 51px;
+                text-align: center;
+            }
+
+            .cat-image{
+                width: 150px;
+            }
+
+            .info{
+                font-family: font.$poppins;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 25px;
+                text-align: center;
+                padding: 0 10px;
+            }
+        }
+
+        .btnNext{
+            @include container(650px, 150px);
+            @include flexbox(flex-end);
+    
+            .nextBtn{
+                @include game-button;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px){
+    .info-wrapper{
+        @include container;
+        background-image: url(../../assets/virtual-pet-bg.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+    
+        .info-container{
+            @include container(450px, 650px);
+            @include flexbox(center, center,column);
+            border: 1px solid rgba(0, 0, 0, 0.45);
+            background-color: color.$background-info-box;
+            border-radius:3px;
+            margin:auto;
+    
+            &-content{
+                @include container(450px, 450px);
+                @include flexbox(center, center, column);
+                margin: auto auto;
+                gap:20px;
+
+                .heading{
+                    font-family: font.$micro-5;
+                    font-weight: 400;
+                    font-size: 51px;
+                    line-height: 51px;
+                    text-align: center;
+                }
+    
+                .cat-image{
+                    width: 150px;
+                }
+    
+                .info{
+                    font-family: font.$poppins;
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 25px;
+                    text-align: center;
+                    padding: 0 10px;
+                }
+                
+                img{
+                    width: 300px;
+                }
+            
+            }
+    
+            .btnNext{
+                @include container(450px, 150px);
+                @include flexbox(flex-end);
+        
+                .nextBtn{
+                    @include game-button;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

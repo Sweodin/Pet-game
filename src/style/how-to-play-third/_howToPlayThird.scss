@@ -1,0 +1,153 @@
+@use '../scss/color';
+@use '../scss/font';
+@import '../scss/mixing';
+
+.info-wrapper{
+    @include container;
+    background-image: url(../../assets/virtual-pet-bg.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+
+    .info-container{
+        @include container(700px, 650px);
+        @include flexbox(center, center,column);
+        border: 1px solid rgba(0, 0, 0, 0.45);
+        background-color: color.$background-info-box;
+        border-radius:3px;
+        margin:auto;
+        box-shadow: -10px 10px 0 #c96523;;
+
+        &-content{
+            @include container(450px, 450px);
+            @include flexbox(center, center, column);
+            margin: auto auto;
+            gap:20px;
+
+            .btnPlay{
+                @include container(650px, 150px);
+                @include flexbox(center, center);
+        
+                .play{
+                    @include nav-button;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: color.$play-hover;
+                    }
+    
+                    &:active {
+                        background-color: color.$play-active;
+                        color: #d3d0d0;
+                        transform: scale(0.95);
+                    }
+                }
+            }
+
+            .info{
+                font-family: font.$poppins;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 25px;
+                text-align: center;
+                padding: 0 10px;
+            }
+
+            .gameBtn-container{
+                @include container(650px, 150px);
+                @include flexbox(space-between, center);
+        
+                .game-btn{
+                    @include game-button;
+                    padding: 10px;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .play-button-container{
+            @include container(650px, 150px);
+            @include flexbox(center, center);
+    
+            .play-btn{
+                @include game-button;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 500px){
+
+.info-wrapper{
+    @include container(500px);
+    background-image: url(../../assets/virtual-pet-bg.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+
+    .info-container{
+        @include container(500px, 650px);
+
+        &-content{
+            @include container(450px, 450px);
+            @include flexbox(center, center, column);
+            margin: auto auto;
+            gap:20px;
+
+            .btnPlay{
+                @include container(500px, 150px);
+        
+                .play{
+                    @include nav-button;
+                    width: 150px;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: color.$play-hover;
+                    }
+    
+                    &:active {
+                        background-color: color.$play-active;
+                        color: #d3d0d0;
+                        transform: scale(0.95);
+                    }
+                }
+            }
+
+            .info{
+                font-family: font.$poppins;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 25px;
+                text-align: center;
+                padding: 0 10px;
+            }
+
+            .gameBtn-container{
+                @include container(450px, 150px);
+                @include flexbox(space-around, center);
+        
+                .game-btn{
+                    @include game-button;
+                    width: 150px;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .play-button-container{
+            @include container(350px, 150px);
+            @include flexbox(center, center);
+    
+            .play-btn{
+                @include game-button;
+                cursor: pointer;
+            }
+        }
+    }
+}
+}

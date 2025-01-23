@@ -1,0 +1,147 @@
+@use '../scss/color';
+@use '../scss/font';
+@import '../scss/mixing'; 
+
+// Wrapper principale
+.team-wrapper {
+  @include container;
+  background-image: url(../../assets/virtual-pet-bg.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+
+  .team-container {
+    @include container(800px, 300px);
+    @include flexbox(center, center, column);
+    border: 1px solid rgba(0, 0, 0, 0.45);
+    background-color: color.$form-bg;
+    border-radius: 5px;
+    margin: auto;
+    padding: 20px;
+
+    &-content {
+      @include container(250px, 200px);
+      @include flexbox(center, center, column);
+      margin-bottom: 30px;  // Spacing between the content and the team section
+
+      img {
+        width: 150px;
+        margin-bottom: 20px;
+      }
+
+      .heading-meet {
+        @include specification;
+        font-size: 55px;
+      }
+    }
+  }
+
+  .team {
+    @include container(600px, auto);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .team-row {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .dev {
+      @include flexbox(center, center, column);
+      text-align: center;
+      width: 45%;  // Adjust the width to fit two columns
+      margin-bottom: 30px;
+
+      .dev-heading {
+        @include specification;
+        margin-bottom: 10px;
+      }
+
+      .info {
+        @include specification;
+        font-size: 30px;
+        margin-bottom: 20px;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+
+        .social-btn {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          font-size: 18px;
+          color: white;
+          background-color: color.$btn-home-color;
+          transition: background-color 0.3s, transform 0.3s;
+          cursor: pointer;
+
+          &:hover {
+            background-color: color.$play-hover;
+            transform: scale(1.1);
+          }
+
+          &:active {
+            background-color: color.$play-active;
+            transform: scale(0.95);
+          }
+        }
+      }
+    }
+  }
+
+  // Game button section styling
+  .game-button-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;  // Adjust spacing between team section and button
+
+    .game-button {
+      @include game-button;  // Apply the game-button mixin for the desired styling
+        cursor: pointer;
+    }
+  }
+}
+  
+@media screen and (max-width: 768px) {
+  .team-container {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    &-content {
+      .heading-meet {
+        font-size: 30px;  // Aumenta il font size per uno schermo molto piccolo
+      }
+    }
+  
+    .team {
+      .dev {
+        width: 100%;  // Rendi le colonne stackate su schermi ancora più piccoli
+        justify-content: center;
+        text-align: center; // Allineamento centrato per i nomi
+  
+        .dev-heading {
+          font-size: 60px;  // Aumenta il font size per un aspetto più grande
+        }
+      }
+    }
+  
+    .game-button-section {
+      .game-button {
+        font-size: 40px;  // Aumenta la dimensione del font per il pulsante
+      }
+    }
+  }
+}
+  
